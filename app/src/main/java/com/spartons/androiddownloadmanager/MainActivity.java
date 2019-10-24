@@ -11,6 +11,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.downloadmanagers_demo.R;
 
+import static com.spartons.androiddownloadmanager.DirectoryHelper.*;
+import static com.spartons.androiddownloadmanager.DownloadSongService.getDownloadService;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String IMAGE_DOWNLOAD_PATH = "http://globalmedicalco.com/photos/globalmedicalco/9/41427.jpg";
@@ -27,18 +30,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, WRITE_EXTERNAL_STORAGE_REQUEST_CODE);
             return;
         }
-        com.spartons.androiddownloadmanager.DirectoryHelper.createDirectory(this);
+        createDirectory(this);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.downloadImageButton: {
-                startService(com.spartons.androiddownloadmanager.DownloadSongService.getDownloadService(this, IMAGE_DOWNLOAD_PATH, com.spartons.androiddownloadmanager.DirectoryHelper.ROOT_DIRECTORY_NAME.concat("/")));
+                startService(getDownloadService(this, IMAGE_DOWNLOAD_PATH, ROOT_DIRECTORY_NAME.concat("/")));
                 break;
             }
             case R.id.downloadSongButton: {
-                startService(com.spartons.androiddownloadmanager.DownloadSongService.getDownloadService(this, SONG_DOWNLOAD_PATH, com.spartons.androiddownloadmanager.DirectoryHelper.ROOT_DIRECTORY_NAME.concat("/")));
+                startService(getDownloadService(this, SONG_DOWNLOAD_PATH, ROOT_DIRECTORY_NAME.concat("/")));
                 break;
             }
         }
@@ -49,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == WRITE_EXTERNAL_STORAGE_REQUEST_CODE) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED)
-                com.spartons.androiddownloadmanager.DirectoryHelper.createDirectory(this);
+                createDirectory(this);
         }
     }
 }
