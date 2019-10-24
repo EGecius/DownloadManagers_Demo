@@ -16,7 +16,7 @@ import static com.spartons.androiddownloadmanager.DownloadSongService.getDownloa
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private static final String IMAGE_DOWNLOAD_PATH = "http://globalmedicalco.com/photos/globalmedicalco/9/41427.jpg";
+    private static final String PDF_DOWNLOAD_PATH = "https://www.goldmansachs.com/insights/pages/gs-research/taking-the-heat/report.pdf";
     private static final String SONG_DOWNLOAD_PATH = "https://cloudup.com/files/inYVmLryD4p/download";
     private static final int WRITE_EXTERNAL_STORAGE_REQUEST_CODE = 54654;
 
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.downloadImageButton: {
-                startService(getDownloadService(this, IMAGE_DOWNLOAD_PATH, ROOT_DIRECTORY_NAME.concat("/")));
+                startService(getDownloadService(this, PDF_DOWNLOAD_PATH, ROOT_DIRECTORY_NAME.concat("/")));
                 break;
             }
             case R.id.downloadSongButton: {
