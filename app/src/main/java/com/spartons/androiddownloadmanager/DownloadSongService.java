@@ -5,6 +5,7 @@ import android.app.IntentService;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 
@@ -31,12 +32,15 @@ public class DownloadSongService extends IntentService {
     }
 
     private void startDownload(String downloadPath, String destinationPath) {
+
+        Log.v("Eg:DownloadSongService:36", "startDownload destinationPath:" + destinationPath);
+        Log.i("Eg:DownloadSongService:35", "startDownload downloadPath:" + downloadPath);
+
         Uri uri = Uri.parse(downloadPath);
         DownloadManager.Request request = new DownloadManager.Request(uri);
         request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_MOBILE | DownloadManager.Request.NETWORK_WIFI);  // Tell on which network you want to download file.
         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);  // This will show notification on top when downloading the file.
         request.setTitle("Downloading a file"); // Title for notification.
-        request.setVisibleInDownloadsUi(true);
         request.setDestinationInExternalPublicDir(destinationPath, uri.getLastPathSegment());  // Storage directory path
         ((DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE)).enqueue(request); // This will start downloading
     }
