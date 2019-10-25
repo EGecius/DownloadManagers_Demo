@@ -13,6 +13,7 @@ import java.io.File;
 public class DirectoryHelper extends ContextWrapper {
 
     public static final String ROOT_DIRECTORY_NAME = "DownloadManager";
+    private File externalStoragePublicDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
 
     private DirectoryHelper(Context context) {
         super(context);
@@ -35,13 +36,13 @@ public class DirectoryHelper extends ContextWrapper {
 
     private void createDirectory(String directoryName) {
         if (!isDirectoryExists(directoryName)) {
-            File file = new File(Environment.getExternalStorageDirectory(), directoryName);
+            File file = new File(externalStoragePublicDirectory, directoryName);
             file.mkdir();
         }
     }
 
     private boolean isDirectoryExists(String directoryName) {
-        File file = new File(Environment.getExternalStorageDirectory() + "/" + directoryName);
+        File file = new File(externalStoragePublicDirectory + "/" + directoryName);
         return file.isDirectory() && file.exists();
     }
 }
