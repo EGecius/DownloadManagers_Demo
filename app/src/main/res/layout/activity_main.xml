@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context="com.spartons.androiddownloadmanager.MainActivity">
+    tools:context="com.spartons.androiddownloadmanager.ExternalStorageActivity">
 
     <Button
         android:id="@+id/downloadImageButton"

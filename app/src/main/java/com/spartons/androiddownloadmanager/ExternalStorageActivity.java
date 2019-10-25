@@ -14,7 +14,7 @@ import com.example.downloadmanagers_demo.R;
 import static com.spartons.androiddownloadmanager.DirectoryHelper.*;
 import static com.spartons.androiddownloadmanager.DownloadSongService.getDownloadService;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class ExternalStorageActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String PDF_DOWNLOAD_PATH = "https://www.goldmansachs.com/insights/pages/gs-research/taking-the-heat/report.pdf";
     private static final String SONG_DOWNLOAD_PATH = "https://cloudup.com/files/inYVmLryD4p/download";
