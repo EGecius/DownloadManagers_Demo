@@ -1,16 +1,14 @@
 package com.spartons.androiddownloadmanager
 
 import android.content.Context
-import android.content.ContextWrapper
 import android.os.Environment
-
 import java.io.File
 
 
-class DirectoryHelper(context: Context) : ContextWrapper(context) {
+class DirectoryHelper(context: Context) {
 
-    private val externalStoragePublicDirectory =
-        Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
+    private val externalStorageForAndroidQ =
+        context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
 
     private val isExternalStorageAvailable: Boolean
         get() {
@@ -25,13 +23,13 @@ class DirectoryHelper(context: Context) : ContextWrapper(context) {
 
     private fun createDirectory(directoryName: String) {
         if (!isDirectoryExists(directoryName)) {
-            val file = File(externalStoragePublicDirectory, directoryName)
+            val file = File(externalStorageForAndroidQ, directoryName)
             file.mkdir()
         }
     }
 
     private fun isDirectoryExists(directoryName: String): Boolean {
-        val file = File("$externalStoragePublicDirectory/$directoryName")
+        val file = File("$externalStorageForAndroidQ/$directoryName")
         return file.isDirectory && file.exists()
     }
 
