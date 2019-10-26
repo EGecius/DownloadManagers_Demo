@@ -33,7 +33,8 @@ class DirectoryHelper(context: Context) {
     }
 
     private fun isDirectoryExists(@Suppress("SameParameterValue") directoryName: String): Boolean {
-        val file = File("$externalStorageForAndroidQ/$directoryName")
+        val pathName = "$externalStorageForAndroidQ/$directoryName"
+        val file = File(pathName)
         return file.isDirectory && file.exists()
     }
 
