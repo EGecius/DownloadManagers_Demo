@@ -26,11 +26,19 @@ class ExternalStorageActivity : AppCompatActivity() {
 
     private fun setListeners() {
         downloadImageButton.setOnClickListener {
-            startService(getDownloadService(this, PDF_DOWNLOAD_PATH, "$ROOT_DIRECTORY_NAME/"))
+            downloadImage()
         }
         downloadSongButton.setOnClickListener {
-            startService(getDownloadService(this, SONG_DOWNLOAD_PATH, "$ROOT_DIRECTORY_NAME/"))
+            downloadSong()
         }
+    }
+
+    private fun downloadImage() {
+        startService(getDownloadService(this, PDF_DOWNLOAD_PATH, "$ROOT_DIRECTORY_NAME/"))
+    }
+
+    private fun downloadSong() {
+        startService(getDownloadService(this, SONG_DOWNLOAD_PATH, "$ROOT_DIRECTORY_NAME/"))
     }
 
     private fun requestExternalDirectory() {
