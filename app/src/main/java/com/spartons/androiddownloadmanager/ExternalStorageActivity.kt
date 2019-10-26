@@ -37,7 +37,7 @@ class ExternalStorageActivity : AppCompatActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             askForPermission()
         } else {
-            directoryHelper.createDirectory()
+            directoryHelper.createDirectoryIfMissing()
         }
     }
 
@@ -57,7 +57,7 @@ class ExternalStorageActivity : AppCompatActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == WRITE_EXTERNAL_STORAGE_REQUEST_CODE) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED)
-                directoryHelper.createDirectory()
+                directoryHelper.createDirectoryIfMissing()
         }
     }
 

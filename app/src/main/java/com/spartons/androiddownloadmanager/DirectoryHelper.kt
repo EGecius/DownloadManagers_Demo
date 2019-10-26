@@ -16,26 +16,28 @@ class DirectoryHelper(context: Context) {
             return Environment.MEDIA_MOUNTED == extStorageState
         }
 
-    fun createDirectory() {
-        if (isExternalStorageAvailable)
-            createDirectory(ROOT_DIRECTORY_NAME)
+    fun createDirectoryIfMissing() {
+        if (isExternalStorageAvailable) {
+            createDirectory()
+        } else {
+            // TODO: 2019-10-26 handle - external storage not available
+        }
     }
 
-    private fun createDirectory(directoryName: String) {
+    private fun createDirectory() {
+        val directoryName = ROOT_DIRECTORY_NAME
         if (!isDirectoryExists(directoryName)) {
             val file = File(externalStorageForAndroidQ, directoryName)
             file.mkdir()
         }
     }
 
-    private fun isDirectoryExists(directoryName: String): Boolean {
+    private fun isDirectoryExists(@Suppress("SameParameterValue") directoryName: String): Boolean {
         val file = File("$externalStorageForAndroidQ/$directoryName")
         return file.isDirectory && file.exists()
     }
 
     companion object {
-
         const val ROOT_DIRECTORY_NAME = "DownloadManager"
-
     }
 }
