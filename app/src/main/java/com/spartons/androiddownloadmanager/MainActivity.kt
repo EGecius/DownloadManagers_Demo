@@ -7,7 +7,7 @@ import com.spartons.androiddownloadmanager.DirectoryHelper.Companion.ROOT_DIRECT
 import com.spartons.androiddownloadmanager.DownloadSongService.getDownloadService
 import kotlinx.android.synthetic.main.activity_main.*
 
-class ExternalStorageActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var permissionsDelegate: PermissionsDelegate
 
