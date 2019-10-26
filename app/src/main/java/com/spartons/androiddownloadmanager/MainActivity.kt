@@ -3,8 +3,6 @@ package com.spartons.androiddownloadmanager
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.downloadmanagers_demo.R
-import com.spartons.androiddownloadmanager.DirectoryHelper.Companion.ROOT_DIRECTORY_NAME
-import com.spartons.androiddownloadmanager.DownloadSongService.getDownloadService
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -39,7 +37,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun doDownloadImage() {
-        startService(getDownloadService(this, PDF_DOWNLOAD_PATH, "$ROOT_DIRECTORY_NAME/"))
+        networkDownloadsGateway.download(PDF_DOWNLOAD_PATH)
     }
 
     private fun requestDownloadSong() {
@@ -51,7 +49,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun doDownloadSong() {
-        startService(getDownloadService(this, SONG_DOWNLOAD_PATH, "$ROOT_DIRECTORY_NAME/"))
+        networkDownloadsGateway.download(SONG_DOWNLOAD_PATH)
     }
 
     override fun onRequestPermissionsResult(
