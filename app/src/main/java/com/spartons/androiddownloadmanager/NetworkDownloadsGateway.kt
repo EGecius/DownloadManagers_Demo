@@ -4,10 +4,10 @@ import android.app.DownloadManager
 import android.content.Context
 import android.net.Uri
 
-class NetworkExportsGateway(
+class NetworkDownloadsGateway(
     context: Context,
     private val destinationPath: String
-) : ExportsGateway {
+) : DownloadsGateway {
 
     private val downloadManager =
         context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager

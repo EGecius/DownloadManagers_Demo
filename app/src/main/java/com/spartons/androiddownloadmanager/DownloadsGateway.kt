@@ -1,6 +1,6 @@
 package com.spartons.androiddownloadmanager
 
-interface ExportsGateway {
+interface DownloadsGateway {
 
     fun download(downloadUrl: String)
 
