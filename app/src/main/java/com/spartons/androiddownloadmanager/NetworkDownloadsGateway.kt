@@ -5,8 +5,7 @@ import android.content.Context
 import android.net.Uri
 
 class NetworkDownloadsGateway(
-    context: Context,
-    private val destinationPath: String
+    context: Context
 ) : DownloadsGateway {
 
     private val downloadManager =
@@ -23,7 +22,13 @@ class NetworkDownloadsGateway(
         request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_MOBILE or DownloadManager.Request.NETWORK_WIFI)
         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
         request.setTitle("Downloading a file")
-        request.setDestinationInExternalPublicDir(destinationPath, uri.lastPathSegment)
+        request.setDestinationInExternalPublicDir(DESTINATION_PATH, uri.lastPathSegment)
         return request
+    }
+
+    companion object {
+        private val DESTINATION_PATH =
+            "com.spartons.androiddownloadmanager_DownloadSongService_Destination_path"
+
     }
 }
