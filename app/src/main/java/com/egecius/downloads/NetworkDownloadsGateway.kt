@@ -4,9 +4,7 @@ import android.app.DownloadManager
 import android.content.Context
 import android.net.Uri
 
-class NetworkDownloadsGateway(
-    context: Context
-) : DownloadsGateway {
+class NetworkDownloadsGateway(context: Context) : DownloadsGateway {
 
     private val downloadManager =
         context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
@@ -27,8 +25,6 @@ class NetworkDownloadsGateway(
     }
 
     companion object {
-        private const val DESTINATION_PATH =
-            "DownloadManager/"
-
+        private const val DESTINATION_PATH = "DownloadManager/"
     }
 }
