@@ -1,4 +1,4 @@
-package com.spartons.androiddownloadmanager
+package com.egecius.downloads
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -13,7 +13,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        permissionsDelegate = PermissionsDelegate(DirectoryHelper(this), ActivityWrapper(this))
+        permissionsDelegate = PermissionsDelegate(
+            DirectoryHelper(this),
+            ActivityWrapper(this)
+        )
         networkDownloadsGateway = NetworkDownloadsGateway(this)
 
         setClickListeners()
@@ -29,7 +32,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun requestDownloadImage() {
-        permissionsDelegate.requestPermission(object : PermissionsDelegate.Listener {
+        permissionsDelegate.requestPermission(object :
+            PermissionsDelegate.Listener {
             override fun onPermissionGranted() {
                 doDownloadImage()
             }
@@ -41,7 +45,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun requestDownloadSong() {
-        permissionsDelegate.requestPermission(object : PermissionsDelegate.Listener {
+        permissionsDelegate.requestPermission(object :
+            PermissionsDelegate.Listener {
             override fun onPermissionGranted() {
                 doDownloadSong()
             }
@@ -60,7 +65,6 @@ class MainActivity : AppCompatActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         permissionsDelegate.onRequestPermissionsResult(requestCode, grantResults)
     }
-
 
     companion object {
         private const val PDF_DOWNLOAD_PATH =

@@ -1,5 +1,8 @@
-package com.spartons.androiddownloadmanager
+package com.spartons.downloadmanager
 
+import com.egecius.downloads.ActivityWrapper
+import com.egecius.downloads.DirectoryHelper
+import com.egecius.downloads.PermissionsDelegate
 import com.nhaarman.mockitokotlin2.given
 import com.nhaarman.mockitokotlin2.verify
 import org.junit.Before

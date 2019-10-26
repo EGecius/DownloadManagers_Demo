@@ -1,4 +1,4 @@
-package com.spartons.androiddownloadmanager
+package com.egecius.downloads
 
 import android.content.Context
 import android.os.Environment

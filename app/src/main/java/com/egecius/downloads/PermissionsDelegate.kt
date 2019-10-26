@@ -1,4 +1,4 @@
-package com.spartons.androiddownloadmanager
+package com.egecius.downloads
 
 class PermissionsDelegate(
     private val directoryHelper: DirectoryHelper,
