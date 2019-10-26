@@ -9,7 +9,7 @@ class PermissionsDelegate(
 
     fun requestPermission(listener: Listener) {
         this.listener = listener
-        if (activityWrapper.isBuildVersionCodeM()) {
+        if (activityWrapper.isSdkAtLeastM()) {
             activityWrapper.requestPermissionsExternalStorage()
         } else {
             directoryHelper.createDirectoryIfMissing()

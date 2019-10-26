@@ -42,7 +42,7 @@ class PermissionsDelegateTest {
     }
 
     private fun givenIsAndroidVersionAtLeastM() {
-        given(activityWrapper.isBuildVersionCodeM()).willReturn(true)
+        given(activityWrapper.isSdkAtLeastM()).willReturn(true)
     }
 
     @Test
@@ -64,7 +64,7 @@ class PermissionsDelegateTest {
     }
 
     private fun givenAndroidVersionBelowM() {
-        given(activityWrapper.isBuildVersionCodeM()).willReturn(false)
+        given(activityWrapper.isSdkAtLeastM()).willReturn(false)
     }
 
     /* on Permission granted */
