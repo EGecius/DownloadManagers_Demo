@@ -7,7 +7,8 @@ import android.os.Environment
 import java.io.File
 
 
-class DirectoryHelper private constructor(context: Context) : ContextWrapper(context) {
+class DirectoryHelper(context: Context) : ContextWrapper(context) {
+
     private val externalStoragePublicDirectory =
         Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
 
@@ -17,11 +18,7 @@ class DirectoryHelper private constructor(context: Context) : ContextWrapper(con
             return Environment.MEDIA_MOUNTED == extStorageState
         }
 
-    init {
-        createFolderDirectories()
-    }
-
-    private fun createFolderDirectories() {
+    fun createDirectory() {
         if (isExternalStorageAvailable)
             createDirectory(ROOT_DIRECTORY_NAME)
     }
@@ -42,8 +39,5 @@ class DirectoryHelper private constructor(context: Context) : ContextWrapper(con
 
         const val ROOT_DIRECTORY_NAME = "DownloadManager"
 
-        fun createDirectory(context: Context) {
-            DirectoryHelper(context)
-        }
     }
 }

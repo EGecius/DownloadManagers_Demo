@@ -8,15 +8,17 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.example.downloadmanagers_demo.R
 import com.spartons.androiddownloadmanager.DirectoryHelper.Companion.ROOT_DIRECTORY_NAME
-import com.spartons.androiddownloadmanager.DirectoryHelper.Companion.createDirectory
 import com.spartons.androiddownloadmanager.DownloadSongService.getDownloadService
 import kotlinx.android.synthetic.main.activity_main.*
 
 class ExternalStorageActivity : AppCompatActivity() {
 
+    lateinit var directoryHelper : DirectoryHelper
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        directoryHelper = DirectoryHelper(this)
 
         setListeners()
         requestExternalDirectory()
@@ -35,7 +37,7 @@ class ExternalStorageActivity : AppCompatActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             askForPermission()
         } else {
-            createDirectory(this)
+            directoryHelper.createDirectory()
         }
     }
 
@@ -55,7 +57,7 @@ class ExternalStorageActivity : AppCompatActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == WRITE_EXTERNAL_STORAGE_REQUEST_CODE) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED)
-                createDirectory(this)
+                directoryHelper.createDirectory()
         }
     }
 
