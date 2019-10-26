@@ -1,11 +1,9 @@
 package com.spartons.androiddownloadmanager
 
-import androidx.appcompat.app.AppCompatActivity
-
-class PermissionsDelegate(activity: AppCompatActivity) {
-
-    private val directoryHelper = DirectoryHelper(activity)
-    private val activityWrapper = ActivityWrapper(activity)
+class PermissionsDelegate(
+    private val directoryHelper: DirectoryHelper,
+    private val activityWrapper: ActivityWrapper
+) {
 
     private lateinit var listener: Listener
 

@@ -9,12 +9,12 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class ExternalStorageActivity : AppCompatActivity() {
 
-    lateinit var permissionsDelegate: PermissionsDelegate
+    private lateinit var permissionsDelegate: PermissionsDelegate
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        permissionsDelegate = PermissionsDelegate(this)
+        permissionsDelegate = PermissionsDelegate(DirectoryHelper(this), ActivityWrapper(this))
 
         setListeners()
     }
