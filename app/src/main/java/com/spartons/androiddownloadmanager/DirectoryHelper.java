@@ -6,9 +6,6 @@ import android.os.Environment;
 
 import java.io.File;
 
-/**
- * Created by Ahsen Saeed on 11/1/2017.
- */
 
 public class DirectoryHelper extends ContextWrapper {
 
