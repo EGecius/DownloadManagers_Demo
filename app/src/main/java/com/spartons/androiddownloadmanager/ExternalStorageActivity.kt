@@ -15,6 +15,8 @@ class ExternalStorageActivity : AppCompatActivity() {
 
     lateinit var directoryHelper : DirectoryHelper
 
+    lateinit var permissionsDelegate: PermissionsDelegate
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -26,18 +28,34 @@ class ExternalStorageActivity : AppCompatActivity() {
 
     private fun setListeners() {
         downloadImageButton.setOnClickListener {
-            downloadImage()
+            requestDownloadImage()
         }
         downloadSongButton.setOnClickListener {
-            downloadSong()
+            requestDownloadSong()
         }
     }
 
-    private fun downloadImage() {
+    private fun requestDownloadImage() {
+        permissionsDelegate.request(object : PermissionsDelegate.Listener {
+            override fun onPermissionGranted() {
+                doDownloadImage()
+            }
+        })
+    }
+
+    private fun doDownloadImage() {
         startService(getDownloadService(this, PDF_DOWNLOAD_PATH, "$ROOT_DIRECTORY_NAME/"))
     }
 
-    private fun downloadSong() {
+    private fun requestDownloadSong() {
+        permissionsDelegate.request(object : PermissionsDelegate.Listener {
+            override fun onPermissionGranted() {
+                doDownloadSong()
+            }
+        })
+    }
+
+    private fun doDownloadSong() {
         startService(getDownloadService(this, SONG_DOWNLOAD_PATH, "$ROOT_DIRECTORY_NAME/"))
     }
 
