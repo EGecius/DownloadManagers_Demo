@@ -27,8 +27,8 @@ class NetworkDownloadsGateway(
     }
 
     companion object {
-        private val DESTINATION_PATH =
-            "com.spartons.androiddownloadmanager_DownloadSongService_Destination_path"
+        private const val DESTINATION_PATH =
+            "DownloadManager/"
 
     }
 }
