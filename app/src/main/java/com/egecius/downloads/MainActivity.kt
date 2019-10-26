@@ -32,8 +32,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun requestDownloadImage() {
-        permissionsDelegate.requestPermission(object :
-            PermissionsDelegate.Listener {
+        permissionsDelegate.requestPermission(object : PermissionsDelegate.Listener {
             override fun onPermissionGranted() {
                 doDownloadImage()
             }
@@ -45,8 +44,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun requestDownloadSong() {
-        permissionsDelegate.requestPermission(object :
-            PermissionsDelegate.Listener {
+        permissionsDelegate.requestPermission(object : PermissionsDelegate.Listener {
             override fun onPermissionGranted() {
                 doDownloadSong()
             }
