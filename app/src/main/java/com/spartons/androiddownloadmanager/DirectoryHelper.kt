@@ -4,7 +4,7 @@ import android.content.Context
 import android.os.Environment
 import java.io.File
 
-
+@AllOpen
 class DirectoryHelper(context: Context) {
 
     private val externalStorageForAndroidQ =

@@ -27,5 +27,4 @@ class PermissionsDelegate(
     interface Listener {
         fun onPermissionGranted()
     }
-
 }

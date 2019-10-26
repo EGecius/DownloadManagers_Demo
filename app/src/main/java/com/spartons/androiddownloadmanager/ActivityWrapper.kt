@@ -6,6 +6,7 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 
+@AllOpen
 class ActivityWrapper(private val appCompatActivity: AppCompatActivity) {
 
     @RequiresApi(Build.VERSION_CODES.M)
