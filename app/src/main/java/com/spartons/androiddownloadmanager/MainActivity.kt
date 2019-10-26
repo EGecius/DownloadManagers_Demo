@@ -18,10 +18,10 @@ class MainActivity : AppCompatActivity() {
         permissionsDelegate = PermissionsDelegate(DirectoryHelper(this), ActivityWrapper(this))
         networkDownloadsGateway = NetworkDownloadsGateway(this)
 
-        setListeners()
+        setClickListeners()
     }
 
-    private fun setListeners() {
+    private fun setClickListeners() {
         downloadImageButton.setOnClickListener {
             requestDownloadImage()
         }
