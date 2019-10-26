@@ -9,18 +9,15 @@ import androidx.appcompat.app.AppCompatActivity
 class PermissionsDelegate(private val activity: AppCompatActivity) {
 
     private val directoryHelper = DirectoryHelper(activity)
+    private lateinit var listener: Listener
 
-    fun request(listener: Listener) {
-        requestExternalDirectory()
-
-    }
-
-
-    private fun requestExternalDirectory() {
+    fun requestPermission(listener: Listener) {
+        this.listener = listener
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             askForPermission()
         } else {
             directoryHelper.createDirectoryIfMissing()
+            listener.onPermissionGranted()
         }
     }
 
@@ -34,20 +31,18 @@ class PermissionsDelegate(private val activity: AppCompatActivity) {
 
     fun onRequestPermissionsResult(requestCode: Int, grantResults: IntArray) {
         if (requestCode == WRITE_EXTERNAL_STORAGE_REQUEST_CODE) {
-            if (grantResults[0] == PackageManager.PERMISSION_GRANTED)
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 directoryHelper.createDirectoryIfMissing()
+                listener.onPermissionGranted()
+            }
         }
     }
-
 
     interface Listener {
         fun onPermissionGranted()
     }
 
     companion object {
-
         private const val WRITE_EXTERNAL_STORAGE_REQUEST_CODE = 54654
-
-
     }
 }

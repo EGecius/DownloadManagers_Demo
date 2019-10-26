@@ -14,7 +14,7 @@ class ExternalStorageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        permissionsDelegate = PermissionsDelegate(applicationContext)
+        permissionsDelegate = PermissionsDelegate(this)
 
         setListeners()
     }
@@ -29,7 +29,7 @@ class ExternalStorageActivity : AppCompatActivity() {
     }
 
     private fun requestDownloadImage() {
-        permissionsDelegate.request(object : PermissionsDelegate.Listener {
+        permissionsDelegate.requestPermission(object : PermissionsDelegate.Listener {
             override fun onPermissionGranted() {
                 doDownloadImage()
             }
@@ -41,7 +41,7 @@ class ExternalStorageActivity : AppCompatActivity() {
     }
 
     private fun requestDownloadSong() {
-        permissionsDelegate.request(object : PermissionsDelegate.Listener {
+        permissionsDelegate.requestPermission(object : PermissionsDelegate.Listener {
             override fun onPermissionGranted() {
                 doDownloadSong()
             }
