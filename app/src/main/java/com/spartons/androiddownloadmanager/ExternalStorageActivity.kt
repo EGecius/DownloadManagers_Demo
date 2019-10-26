@@ -7,8 +7,8 @@ import android.os.Bundle
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.example.downloadmanagers_demo.R
-import com.spartons.androiddownloadmanager.DirectoryHelper.ROOT_DIRECTORY_NAME
-import com.spartons.androiddownloadmanager.DirectoryHelper.createDirectory
+import com.spartons.androiddownloadmanager.DirectoryHelper.Companion.ROOT_DIRECTORY_NAME
+import com.spartons.androiddownloadmanager.DirectoryHelper.Companion.createDirectory
 import com.spartons.androiddownloadmanager.DownloadSongService.getDownloadService
 import kotlinx.android.synthetic.main.activity_main.*
 
