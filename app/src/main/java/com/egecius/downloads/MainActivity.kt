@@ -37,25 +37,17 @@ class MainActivity : AppCompatActivity() {
     private fun requestDownloadImage() {
         permissionsDelegate.requestPermission(object : PermissionsDelegate.Listener {
             override fun onPermissionGranted() {
-                doDownloadImage()
+                networkDownloadsGateway.download(PDF_DOWNLOAD_PATH)
             }
         })
-    }
-
-    private fun doDownloadImage() {
-        networkDownloadsGateway.download(PDF_DOWNLOAD_PATH)
     }
 
     private fun requestDownloadSong() {
         permissionsDelegate.requestPermission(object : PermissionsDelegate.Listener {
             override fun onPermissionGranted() {
-                doDownloadSong()
+                networkDownloadsGateway.download(SONG_DOWNLOAD_PATH)
             }
         })
-    }
-
-    private fun doDownloadSong() {
-        networkDownloadsGateway.download(SONG_DOWNLOAD_PATH)
     }
 
     private fun requestDownloadCsv() {
@@ -76,8 +68,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        private const val PDF_DOWNLOAD_PATH = "https://www.goldmansachs.com/insights/pages/gs-research/taking-the-heat/report.pdf"
+        private const val PDF_DOWNLOAD_PATH =
+            "https://www.goldmansachs.com/insights/pages/gs-research/taking-the-heat/report.pdf"
         private const val SONG_DOWNLOAD_PATH = "https://cloudup.com/files/inYVmLryD4p/download"
-        private const val CSV_DOWNLOAD_PATH = "https://samplecsvs.s3.amazonaws.com/Sacramentorealestatetransactions.csv"
+        private const val CSV_DOWNLOAD_PATH =
+            "https://samplecsvs.s3.amazonaws.com/Sacramentorealestatetransactions.csv"
     }
 }
